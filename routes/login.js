@@ -1,5 +1,8 @@
 var express = require('express');
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
+
+var SEED = require('../config/config').SEED;
 
 var app = express();
 
@@ -34,11 +37,14 @@ app.post('/', (req,res) => {
         }
 
         //Crear JWT
+        usuario.contraseña = '';
+        var token = jwt.sign({usuario}, SEED, {expiresIn: 14400});
 
         res.status(200).json({
             ok: true,
             usuario,
-            id: usuario._id
+            id: usuario._id,
+            token
         });
     });
 });
