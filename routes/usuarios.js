@@ -122,6 +122,15 @@ app.delete('/:id', mdAuth.verificarToken, (req,res) => {
                 errors: err
             });
         }
+
+        if(!usuario) {
+            return res.status(400).json({
+                ok: false,
+                mensaje: 'No existe un usuario con ese ID',
+                errors: err
+            });
+        }
+
         res.status(200).json({
             ok: true,
             usuario

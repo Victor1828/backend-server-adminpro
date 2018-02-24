@@ -13,7 +13,7 @@ exports.verificarToken = (req, res, next) => {
             errors: err
         });
     }
-    req.usuario = decoded;
+    req.usuario = decoded.usuario;
     next();
   });
 }

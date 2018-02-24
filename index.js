@@ -16,6 +16,8 @@ app.use(bodyParser.json());
 var appRoutes = require('./routes/app');
 var usuarioRoutes = require('./routes/usuarios');
 var loginRoutes = require('./routes/login');
+var hospitalRoutes = require('./routes/hospitales');
+var medicoRoutes = require('./routes/medicos');
 
 //Conexion db
 mongoose.connect('mongodb://localhost/hospitalDB');
@@ -27,7 +29,8 @@ db.once('open', () => console.log('Base de datos: \x1b[32m%s\x1b[0m', 'online'))
 app.use('/', appRoutes);
 app.use('/usuario', usuarioRoutes);
 app.use('/login', loginRoutes);
-
+app.use('/hospital', hospitalRoutes);
+app.use('/medico', medicoRoutes);
 
 //Escuchar peticiones
 app.listen(3000, () => {
