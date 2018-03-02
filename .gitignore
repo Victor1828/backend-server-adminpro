@@ -3,3 +3,12 @@ node_modules
 
 #TernJS
 .tern-project
+
+#Jshint
+.jshintrc
+
+#Config
+config
+
+#Node google-signin
+google-signin/node_modules
