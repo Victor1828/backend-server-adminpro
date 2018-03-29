@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 // });
 
 // Crear usuarios
-app.post('/', mdAuth.verificarToken, (req, res) => {
+app.post('/', (req, res) => {
   const body = req.body;
   const salt = bcrypt.genSaltSync(10);
 

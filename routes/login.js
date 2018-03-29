@@ -13,7 +13,7 @@ const app = express();
 const Usuario = require('../models/usuario');
 
 // Login general
-app.post('/', (req,res) => {
+app.post('/', (req, res) => {
   const body = req.body;
 
   Usuario.findOne({ correo: body.correo }, (err, usuario) => {
@@ -34,7 +34,7 @@ app.post('/', (req,res) => {
     }
 
     if (!bcrypt.compareSync(body.contraseña, usuario.contraseña)) {
-      res.status(400).json({
+      return res.status(400).json({
         ok: false,
         mensaje: 'Credenciales incorrectas - contraseña',
         errors: { mensaje: 'Contraseña incorrecta' },
